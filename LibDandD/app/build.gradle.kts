@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("jvm") version "1.8"
-    "maven-publish"
+    id("maven-publish")
 }
 
 android {
@@ -48,6 +47,16 @@ android {
     }
 }
 
+publishing{
+    publications{
+        register<MavenPublication>("release"){
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -67,6 +76,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 }
 
-group = "com.github.Gabriel-S-camargo"  // Seu usuário do GitHub
-version = "1.0.0"  // Defina a versão da sua biblioteca
 
