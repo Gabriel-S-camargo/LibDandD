@@ -93,3 +93,8 @@ fun calcularCustoAtributo(valor: Int): Int {
     }
 }
 
+fun calcularPontosRestantes(atributos: List<String>): Int {
+    val pontosTotais = 27
+    val custoTotal = atributos.sumOf { calcularCustoAtributo(it.toInt()) }
+    return pontosTotais - custoTotal
+}
