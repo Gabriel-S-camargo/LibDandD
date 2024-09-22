@@ -76,7 +76,17 @@ fun enviarFormulario(forca: Int, destreza: Int, constituicao: Int, inteligencia:
 
 // Função para calcular o custo baseado no valor do atributo
 fun calcularCustoAtributo(valor: Int): Int {
-    return custosAtributos.getValue(valor);
+    return when (valor) {
+        8 -> 0
+        9 -> 1
+        10 -> 2
+        11 -> 3
+        12 -> 4
+        13 -> 5
+        14 -> 7
+        15 -> 9
+        else -> throw IllegalArgumentException("Valor de atributo inválido")
+    }
 }
 
 
