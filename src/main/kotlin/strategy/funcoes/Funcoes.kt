@@ -1,9 +1,10 @@
 package strategy.funcoes
 
+import Personagem
 import bonusRacial.BonusRacial
 import strategy.bonusRacial.*
 
-val racas: Map<String, BonusRacial?> = mapOf(
+val racas: Map<String, BonusRacial> = mapOf(
     "Alto elfo" to AltoElfo(),
     "Anão" to Anao(),
     "Anão da montanha" to AnaoDaMontanha(),
@@ -35,7 +36,7 @@ val custosAtributos = mutableMapOf(
     9 to 15
 )
 
-fun converterStringParaBonusRacial(raca: String): BonusRacial? {
+fun converterStringParaBonusRacial(raca: String): BonusRacial {
     return racas.getValue(raca)
 }
 
@@ -62,19 +63,22 @@ private fun validarFormulario(atributos: List<Int>): Boolean {
     }
 }
 
-fun enviarFormulario(forca: Int, destreza: Int, constituicao: Int, inteligencia: Int, sabedoria: Int, carisma: Int): Boolean {
+fun criarPersonagem(bonusRacial: BonusRacial,forca: Int, destreza: Int, constituicao: Int, inteligencia: Int, sabedoria: Int, carisma: Int): Personagem {
     val atributos = listOf(forca, destreza, constituicao, inteligencia, sabedoria, carisma)
 
-    return if (validarFormulario(atributos)) {
-        println("Personagem criado com sucesso!")
-        true
-    } else {
-        println("Erro no envio do formulário. Verifique os pontos utilizados e tente novamente.")
-        false
-    }
+    var personagem = Personagem(bonusRacial)
+
+    personagem.forca = forca
+    personagem.destreza = destreza
+    personagem.constituicao = constituicao
+    personagem.inteligencia = inteligencia
+    personagem.sabedoria = sabedoria
+    personagem.carisma = carisma
+    personagem.aplicarBonusEVida(personagem)
+
+    return personagem
 }
 
-// Função para calcular o custo baseado no valor do atributo
 fun calcularCustoAtributo(valor: Int): Int {
     return when (valor) {
         8 -> 0
@@ -89,9 +93,3 @@ fun calcularCustoAtributo(valor: Int): Int {
     }
 }
 
-
-fun calcularPontosRestantes(atributos: List<String>): Int {
-    val pontosTotais = 27
-    val custoTotal = atributos.sumOf { calcularCustoAtributo(it.toInt()) }
-    return pontosTotais - custoTotal
-}
