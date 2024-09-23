@@ -2,7 +2,7 @@ import bonusRacial.BonusRacial
 
 import strategy.bonusRacial.*
 
-class Personagem (val bonusRacial: BonusRacial){
+class   Personagem (val bonusRacial: BonusRacial){
     var pontosDisponiveis = 27
     var forca = 8
     var destreza = 8
@@ -36,27 +36,6 @@ class Personagem (val bonusRacial: BonusRacial){
         28 to 9, 29 to 9, 30 to 10
     )
 
-    val racas: Map<String, BonusRacial?> = mapOf(
-        "Alto elfo" to AltoElfo(),
-        "Anão" to Anao(),
-        "Anão da montanha" to AnaoDaMontanha(),
-        "Anão da colina" to AnaoDaColina(),
-        "Drow" to Drow(),
-        "Draconato" to Draconato(),
-        "Elfo" to Elfo(),
-        "Elfo da floresta" to ElfoDaFloresta(),
-        "Gnomo" to Gnomo(),
-        "Gnomo da floresta" to GnomoDaFloresta(),
-        "Gnomo das rochas" to GnomoDasRochas(),
-        "Halfling" to Halfling(),
-        "Halfling pés-leves" to HalflingPesLeves(),
-        "Halfling robusto" to HalflingRobusto(),
-        "Humano" to Humano(),
-        "Meio-elfo" to MeioElfo(),
-        "Meio-orc" to MeioOrc(),
-        "Tiefling" to Tiefling()
-    )
-
     fun verificaPontosDisponiveis(personagem: Personagem) : Int{
 
         return personagem.pontosDisponiveis;
@@ -81,47 +60,6 @@ class Personagem (val bonusRacial: BonusRacial){
 
         return personagem
     }
-
-    fun converterStringParaBonusRacial(raca: String): BonusRacial? {
-        return racas.getValue(raca)
-    }
-
-    private fun validarFormulario(atributos: List<Int>): Boolean {
-        val pontosDisponiveis = 27
-        var pontosUsados = 0
-
-        // Verifica se algum atributo está fora do intervalo permitido
-        if (atributos.any { it !in 8..15 }) {
-            println("Erro: Todos os atributos devem estar entre 8 e 15.")
-            return false
-        }
-
-        for(atributo in atributos){
-            val custo = custosAtributos.getValue(atributo)
-
-            pontosUsados += custo
-        }
-
-
-        return if (pontosUsados > pontosDisponiveis) {
-            false
-        } else {
-            true
-        }
-    }
-
-    fun enviarFormulario(forca: Int, destreza: Int, constituicao: Int, inteligencia: Int, sabedoria: Int, carisma: Int): Boolean {
-        val atributos = listOf(forca, destreza, constituicao, inteligencia, sabedoria, carisma)
-
-        return if (validarFormulario(atributos)) {
-            println("Personagem criado com sucesso!")
-            true
-        } else {
-            println("Erro no envio do formulário. Verifique os pontos utilizados e tente novamente.")
-            false
-        }
-    }
-
 
 
 
