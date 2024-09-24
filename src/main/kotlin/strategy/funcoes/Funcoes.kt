@@ -5,23 +5,23 @@ import bonusRacial.BonusRacial
 import strategy.bonusRacial.*
 
 val racas: Map<String, BonusRacial> = mapOf(
-    "Alto elfo" to AltoElfo(),
+    "Alto Elfo" to AltoElfo(),
     "Anão" to Anao(),
-    "Anão da montanha" to AnaoDaMontanha(),
-    "Anão da colina" to AnaoDaColina(),
+    "Anão da Montanha" to AnaoDaMontanha(),
+    "Anão da Colina" to AnaoDaColina(),
     "Drow" to Drow(),
     "Draconato" to Draconato(),
     "Elfo" to Elfo(),
-    "Elfo da floresta" to ElfoDaFloresta(),
+    "Elfo da Floresta" to ElfoDaFloresta(),
     "Gnomo" to Gnomo(),
-    "Gnomo da floresta" to GnomoDaFloresta(),
-    "Gnomo das rochas" to GnomoDasRochas(),
+    "Gnomo da Floresta" to GnomoDaFloresta(),
+    "Gnomo das Rochas" to GnomoDasRochas(),
     "Halfling" to Halfling(),
-    "Halfling pés-leves" to HalflingPesLeves(),
-    "Halfling robusto" to HalflingRobusto(),
+    "Halfling Pés-Leves" to HalflingPesLeves(),
+    "Halfling Robusto" to HalflingRobusto(),
     "Humano" to Humano(),
-    "Meio-elfo" to MeioElfo(),
-    "Meio-orc" to MeioOrc(),
+    "Meio-Elfo" to MeioElfo(),
+    "Meio-Orc" to MeioOrc(),
     "Tiefling" to Tiefling()
 )
 
