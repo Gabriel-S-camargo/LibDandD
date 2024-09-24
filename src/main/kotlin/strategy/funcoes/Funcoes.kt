@@ -63,11 +63,12 @@ private fun validarFormulario(atributos: List<Int>): Boolean {
     }
 }
 
-fun criarPersonagem(bonusRacial: BonusRacial,forca: Int, destreza: Int, constituicao: Int, inteligencia: Int, sabedoria: Int, carisma: Int): Personagem {
+fun criarPersonagem(nome : String, bonusRacial: BonusRacial,forca: Int, destreza: Int, constituicao: Int, inteligencia: Int, sabedoria: Int, carisma: Int): Personagem {
     val atributos = listOf(forca, destreza, constituicao, inteligencia, sabedoria, carisma)
 
     var personagem = Personagem(bonusRacial)
 
+    personagem.nome = nome
     personagem.forca = forca
     personagem.destreza = destreza
     personagem.constituicao = constituicao

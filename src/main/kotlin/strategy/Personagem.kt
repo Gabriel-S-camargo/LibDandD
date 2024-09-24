@@ -3,6 +3,7 @@ import bonusRacial.BonusRacial
 import strategy.bonusRacial.*
 
 class   Personagem (val bonusRacial: BonusRacial){
+    var nome = " "
     var pontosDisponiveis = 27
     var forca = 8
     var destreza = 8
@@ -35,6 +36,10 @@ class   Personagem (val bonusRacial: BonusRacial){
         25 to 7, 26 to 8, 27 to 8,
         28 to 9, 29 to 9, 30 to 10
     )
+
+    fun calculaModificador(atributo : Int) : Int{
+        return valorModificador.getValue(atributo)
+    }
 
     fun verificaPontosDisponiveis(personagem: Personagem) : Int{
 
